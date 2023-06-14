@@ -1,11 +1,7 @@
 package com.example.jokerapp.data
-
-import com.example.jokerapp.model.Category
-
-
 interface ListCategoryCallback {
 
-    fun onSuccess(response: List<Category>)
+    fun onSuccess(response: List<String>)
 
     fun onFailure(message: String)
 }

@@ -16,8 +16,8 @@ class HomePresenter(
         dataSource.findAllCategories(this)
     }
 
-    override fun onSuccess(response: List<Category>) {
-        val categories = response.map { CategoryItem(it) }
+    override fun onSuccess(response: List<String>) {
+        val categories = response.map { CategoryItem(Category(it, 0xFFFF0000)) }
         view.showCategories(categories)
         view.visibilityProgressBar(false)
     }
