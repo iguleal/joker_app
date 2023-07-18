@@ -14,6 +14,7 @@ import com.example.jokerapp.R
 import com.example.jokerapp.model.Joke
 import com.example.jokerapp.presentation.JokePresenter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.squareup.picasso.Picasso
 
 class JokeFragment : Fragment() {
 
@@ -53,7 +54,7 @@ class JokeFragment : Fragment() {
 
     fun showJoke(joke: Joke){
         txtJoke.text = joke.txtJoke
-        // TODO: imagem depois
+        Picasso.get().load(joke.iconUrl).into(iconJoke)
     }
 
     fun showError(message: String){
