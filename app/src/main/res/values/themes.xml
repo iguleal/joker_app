@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.JokerApp" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.JokerApp" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/orange_500</item>
         <item name="colorPrimaryVariant">@color/orange_700</item>
@@ -13,13 +13,10 @@
         <item name="android:statusBarColor">@color/orange_700</item>
     </style>
 
-    <style name="Theme.JokerApp" parent="Base.Theme.JokerApp" />
-
-
     <style name="Theme.JokerApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.JokerApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+    <style name="Theme.JokerApp.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/blue_700</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
         <item name="windowSplashScreenAnimationDuration">300</item>
