@@ -4,11 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.jokerapp.R
+import com.example.jokerapp.model.Joke
+import com.example.jokerapp.presentation.JokePresenter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class JokeFragment : Fragment() {
+
+    private lateinit var txtJoke: TextView
+    private lateinit var iconJoke: ImageView
+    private lateinit var progressBar: ProgressBar
+
+    private var presenter = JokePresenter(this)
 
     companion object {
         const val CATEGORY_KEY_NAME = "categoryName"
@@ -25,7 +38,33 @@ class JokeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val categoryName = arguments?.getString(CATEGORY_KEY_NAME)
-        activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName
+        activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName!!
 
+        progressBar = view.findViewById(R.id.progressBar)
+        txtJoke = view.findViewById(R.id.txt_joke)
+        iconJoke = view.findViewById(R.id.img_logo)
+
+        presenter.findBy(categoryName)
+
+        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            presenter.findBy(categoryName)
+        }
+    }
+
+    fun showJoke(joke: Joke){
+        txtJoke.text = joke.txtJoke
+        // TODO: imagem depois
+    }
+
+    fun showError(message: String){
+        Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun visibilityProgressBar(visibility: Boolean) {
+        if (visibility) {
+            progressBar.visibility = View.VISIBLE
+        } else {
+            progressBar.visibility = View.GONE
+        }
     }
 }
