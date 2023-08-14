@@ -39,7 +39,7 @@ class JokeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val categoryName = arguments?.getString(CATEGORY_KEY_NAME)
-        activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName!!
+        activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName!!.replaceFirstChar { it.uppercase() }
 
         progressBar = view.findViewById(R.id.progressBar)
         txtJoke = view.findViewById(R.id.txt_joke)
